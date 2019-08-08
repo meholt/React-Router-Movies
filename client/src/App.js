@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Router } from 'react-router-dom';
 import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
+import Movie from './Movies/Movie';
 
 const App = () => {
   const [savedList, setSavedList] = useState( [] );
@@ -22,7 +23,7 @@ const App = () => {
 
       <Router path="/" component={MovieList} />
       <Router path="/movies/:id" component={Movie} />
-      
+
     </div>
   );
 };

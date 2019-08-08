@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const MovieList = props => {
   const [movies, setMovies] = useState([])
@@ -30,7 +31,13 @@ const MovieList = props => {
 function MovieDetails({ movie }) {
   const { title, director, metascore, stars } = movie;
   return (
-    <div className="movie-card">
+
+// * Make it so that the card in `MovieList` is a link, 
+// this should direct the user to the `/movies/{id of movie here}`
+// URL, where `:id` is the id of the individual movie.
+// <div className="movie-card">
+
+    <Link to={`/movies/${movie.id}`}>
       <h2>{title}</h2>
       <div className="movie-director">
         Director: <em>{director}</em>
@@ -45,7 +52,7 @@ function MovieDetails({ movie }) {
           {star}
         </div>
       ))}
-    </div>
+      </Link>
   );
 }
 
