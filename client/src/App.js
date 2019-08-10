@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Router } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie';
@@ -21,8 +21,8 @@ const App = () => {
   (ex: `/movies/2`, `/movies/3` where the id is dynamic). 
   This route should load the `Movie` component. */}
 
-      <Router path="/" component={MovieList} />
-      <Router path="/movies/:id" component={Movie} />
+      <Route exact path="/" component={MovieList} />
+      <Route path="/movies/:id" component={Movie} />
 
     </div>
   );

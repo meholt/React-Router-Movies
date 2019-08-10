@@ -2,16 +2,21 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Movie = (props) => {
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState();
+
+  console.log(props);
  
   useEffect(() => {
     const id = 1;
     // change ^^^ that line and grab the id from the URL
     // You will NEED to add a dependency array to this effect hook
 
+// console.log("test");
+
        axios
-        .get(`http://localhost:5000/api/movies/${movie.id}`)
+        .get(`http://localhost:5000/api/movies/${props.match.params.id}`)
         .then(response => {
+          // console.log("test2");
           setMovie(response.data);
         })
         .catch(error => {
@@ -21,10 +26,10 @@ const Movie = (props) => {
   },[]);
   
   // Uncomment this only when you have moved on to the stretch goals
-  // const saveMovie = () => {
-  //   const addToSavedList = props.addToSavedList;
-  //   addToSavedList(movie)
-  // }
+  const saveMovie = () => {
+    const addToSavedList = props.addToSavedList;
+    addToSavedList(movie)
+  }
 
   if (!movie) {
     return <div>Loading movie information...</div>;
